@@ -1,5 +1,6 @@
 import { AtSign, User, X } from 'lucide-react';
 import { Button } from '../../../components/button';
+import { Input } from '../../../components/input';
 
 interface ConfirmTripModalProps {
   toggleConfirmTripModal: () => void;
@@ -29,27 +30,13 @@ export function ConfirmTripModal({ toggleConfirmTripModal, createTrip }: Confirm
 
         {/* Add Owner Data Input */}
         <form onSubmit={createTrip} className="space-y-3">
-          <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+          <Input type="text" name="name" placeholder="Seu nome completo">
             <User className="size-5 text-zinc-400" />
+          </Input>
 
-            <input
-              type="text"
-              name="name"
-              placeholder="Seu nome completo"
-              className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
-            />
-          </div>
-
-          <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+          <Input type="text" name="email" placeholder="Seu e-mail pessoal">
             <AtSign className="size-5 text-zinc-400" />
-
-            <input
-              type="text"
-              name="email"
-              placeholder="Seu e-mail pessoal"
-              className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
-            />
-          </div>
+          </Input>
 
           <Button type="submit" size="full">
             Confirmar criação da viagem

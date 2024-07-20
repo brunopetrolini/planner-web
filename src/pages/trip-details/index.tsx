@@ -4,12 +4,18 @@ import { DestinationAndDateHeader } from './components/destination-and-date-head
 import { GuestsList } from './components/guests-list';
 import { ImportantLinks } from './components/important-links';
 import { CreateActivityModal } from './modals/create-activity-modal';
+import { CreateLinkModal } from './modals/create-link-modal';
 
 export function TripDetailsPage() {
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] = useState(false);
+  const [isCreateLinkModalOpen, setIsCreateLinkModalOpen] = useState(false);
 
   function toggleCreateActivityModal() {
     setIsCreateActivityModalOpen(!isCreateActivityModalOpen);
+  }
+
+  function toggleCreateLinkModal() {
+    setIsCreateLinkModalOpen(!isCreateLinkModalOpen);
   }
 
   return (
@@ -22,7 +28,7 @@ export function TripDetailsPage() {
 
         {/* Sidebar */}
         <div className="w-80 space-y-6">
-          <ImportantLinks />
+          <ImportantLinks createLink={toggleCreateLinkModal} />
 
           {/* Separator */}
           <div className="w-full h-px bg-zinc-800" />
@@ -32,6 +38,8 @@ export function TripDetailsPage() {
       </main>
 
       {isCreateActivityModalOpen && <CreateActivityModal toggleCreateActivityModal={toggleCreateActivityModal} />}
+
+      {isCreateLinkModalOpen && <CreateLinkModal toggleCreateLinkModal={toggleCreateLinkModal} />}
     </div>
   );
 }

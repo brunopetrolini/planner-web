@@ -5,9 +5,16 @@ import { Input } from '../../../components/input';
 interface ConfirmTripModalProps {
   toggleConfirmTripModal: () => void;
   createTrip: (event: React.FormEvent<HTMLFormElement>) => void;
+  setOwnerName: (name: string) => void;
+  setOwnerEmail: (email: string) => void;
 }
 
-export function ConfirmTripModal({ toggleConfirmTripModal, createTrip }: ConfirmTripModalProps) {
+export function ConfirmTripModal({
+  toggleConfirmTripModal,
+  createTrip,
+  setOwnerName,
+  setOwnerEmail,
+}: ConfirmTripModalProps) {
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
       <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
@@ -30,11 +37,21 @@ export function ConfirmTripModal({ toggleConfirmTripModal, createTrip }: Confirm
 
         {/* Add Owner Data Input */}
         <form onSubmit={createTrip} className="space-y-3">
-          <Input type="text" name="name" placeholder="Seu nome completo">
+          <Input
+            type="text"
+            name="name"
+            placeholder="Seu nome completo"
+            onChange={(event) => setOwnerName(event.target.value)}
+          >
             <User className="size-5 text-zinc-400" />
           </Input>
 
-          <Input type="text" name="email" placeholder="Seu e-mail pessoal">
+          <Input
+            type="text"
+            name="email"
+            placeholder="Seu e-mail pessoal"
+            onChange={(event) => setOwnerEmail(event.target.value)}
+          >
             <AtSign className="size-5 text-zinc-400" />
           </Input>
 
